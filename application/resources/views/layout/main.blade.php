@@ -59,7 +59,7 @@
     <a href="{{ route('karyawan.index') }}" class="brand-link">
       <img src="{{ url('assets/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">Admin</span>
     </a>
 
     <!-- Sidebar -->
@@ -96,11 +96,8 @@
 @yield('content')
 
 <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+    <strong>Copyright &copy; 2020 </strong>
     All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.0.5
-    </div>
   </footer>
 
   <!-- Control Sidebar -->
