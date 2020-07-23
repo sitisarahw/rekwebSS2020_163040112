@@ -8,5 +8,5 @@ class Karyawan extends Model
 {
     //
     protected $fillable = ['npp', 'nama', 'tgl_lahir', 'jenjang', 'jabatan', 'wilayah', 'singkatan', 'unit', 'unit_besaran', 'link_img'];
-    protected $timestamp = false;
+    public $timestamps = false;
 }

@@ -40,21 +40,20 @@ class KaryawanController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'npp' => 'required',
+            'nama' => 'required',
+            'tanggal_lahir' => 'required',
+            'jenjang' => 'required',
+            'jabatan' => 'required',
+            'wilayah' => 'required',
+            'singkatan' => 'required',
+            'unit' => 'required',
+            'unit_besaran' => 'required',
+            'link_img' => 'required',
+        ]);
         Karyawan::create($request->all());
         return redirect('/karyawan')->with('status', 'Data berhasil ditambahkan!');
-        // Karyawan::create([
-        //     'npp' => $request->npp,
-        //     'nama' => $request->nama,
-        //     'tgl_lahir' => $request->tanggal_lahir,
-        //     'jenjang' => $request->jenjang,
-        //     'jabatan' => $request->jabatan,
-        //     'wilayah' => $request->wilayah,
-        //     'singkatan' => $request->singkatan,
-        //     'unit' => $request->unit,
-        //     'unit_besaran' => $request->unit_besaran,
-        //     'link_img' => $request->link_img,
-        // ]);
-
     }
 
     /**
@@ -90,6 +89,18 @@ class KaryawanController extends Controller
     public function update(Request $request, Karyawan $karyawan)
     {
         //
+        Karyawan::where('id', $karyawan->id)->update([
+            'npp' => $request->npp,
+            'nama' => $request->nama,
+            'tgl_lahir' => $request->tanggal_lahir,
+            'jenjang' => $request->jenjang,
+            'jabatan' => $request->jabatan,
+            'wilayah' => $request->wilayah,
+            'singkatan' => $request->singkatan,
+            'unit' => $request->unit,
+            'unit_besaran' => $request->unit_besaran,
+            'link_img' => $request->link_img,
+        ]);
         return redirect('/karyawan') ->with('status', 'Data karyawan berhasil diubah');
     }
 
