@@ -25,6 +25,19 @@ class KaryawanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function search(Request $request)
+    {
+        //
+        $karyawan= Karyawan::where('nama', 'like', '%' . $request->nama . '%')->orderBy('id');
+        dump($karyawan);
+        return view('karyawan.index', compact('karyawan'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         //
