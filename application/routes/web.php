@@ -18,4 +18,4 @@ Route::get('/', function () {
 });
 
 Route::resource('karyawan', 'KaryawanController');
-Route::get('/karyawan/search', 'KaryawanController@search')->name('karyawan.search');
+Route::post('/karyawan/search', 'KaryawanController@search')->name('karyawan.search');

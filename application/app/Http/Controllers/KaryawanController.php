@@ -28,8 +28,11 @@ class KaryawanController extends Controller
     public function search(Request $request)
     {
         //
-        $karyawan= Karyawan::where('nama', 'like', '%' . $request->nama . '%')->orderBy('id');
-        dump($karyawan);
+        if($request->name != null) {
+            $karyawan= Karyawan::where('nama', 'LIKE', '%' . $request->name . '%')->orderBy('id')->get();
+        } else {
+            $karyawan= Karyawan::all();
+        }
         return view('karyawan.index', compact('karyawan'));
     }
 
@@ -65,7 +68,26 @@ class KaryawanController extends Controller
             'unit_besaran' => 'required',
             'link_img' => 'required',
         ]);
-        Karyawan::create($request->all());
+
+        if($request->hasfile('link_img')) {
+            $file = $request->file('link_img');
+            $extension = $file->getClientOriginalExtension();
+            $filename = $file->getClientOriginalName();
+            $file->move('assets/img/karyawan/', $filename);
+        }
+
+        Karyawan::create([
+            'npp' => $request->npp,
+            'nama' => $request->nama,
+            'tgl_lahir' => $request->tanggal_lahir,
+            'jenjang' => $request->jenjang,
+            'jabatan' => $request->jabatan,
+            'wilayah' => $request->wilayah,
+            'singkatan' => $request->singkatan,
+            'unit' => $request->unit,
+            'unit_besaran' => $request->unit_besaran,
+            'link_img' => $filename,
+        ]);
         return redirect('/karyawan')->with('status', 'Data berhasil ditambahkan!');
     }
 
@@ -102,6 +124,26 @@ class KaryawanController extends Controller
     public function update(Request $request, Karyawan $karyawan)
     {
         //
+        $request->validate([
+            'npp' => 'required',
+            'nama' => 'required',
+            'tanggal_lahir' => 'required',
+            'jenjang' => 'required',
+            'jabatan' => 'required',
+            'wilayah' => 'required',
+            'singkatan' => 'required',
+            'unit' => 'required',
+            'unit_besaran' => 'required',
+            'link_img' => 'required',
+        ]);
+
+        if($request->hasfile('link_img')) {
+            $file = $request->file('link_img');
+            $extension = $file->getClientOriginalExtension();
+            $filename = $file->getClientOriginalName();
+            $file->move('assets/img/karyawan/', $filename);
+        }
+
         Karyawan::where('id', $karyawan->id)->update([
             'npp' => $request->npp,
             'nama' => $request->nama,
@@ -112,7 +154,7 @@ class KaryawanController extends Controller
             'singkatan' => $request->singkatan,
             'unit' => $request->unit,
             'unit_besaran' => $request->unit_besaran,
-            'link_img' => $request->link_img,
+            'link_img' => $filename,
         ]);
         return redirect('/karyawan') ->with('status', 'Data karyawan berhasil diubah');
     }

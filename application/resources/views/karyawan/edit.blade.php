@@ -98,8 +98,8 @@
                   </div>
 
                   <div class="form-group">
-                      <label for="Foto" class="control-label">Foto</label>
-                      <input type="text" class="form-control @error('link_img') is-invalid @enderror" name="link_img" placeholder="Foto" value="{{ $karyawan->link_img }}">
+                      <label for="Foto" class="control-label">Foto</label><br>
+                      <input type="file" class="@error('link_img') is-invalid @enderror" name="link_img" value="{{ $karyawan->link_img }}">
                       @error('link_img')
                         <div class="invalid-feedback">{{ $message }}</div>
                       @enderror

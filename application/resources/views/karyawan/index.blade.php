@@ -87,22 +87,6 @@
                   </tr>
                   @endforeach
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>#</th>
-                    <th>Foto</th>
-                    <th>NPP</th>
-                    <th>Nama</th>
-                    <th>Tanggal Lahir</th>
-                    <th>Jenjang</th>
-                    <th>Jabatan</th>
-                    <th>Wilayah</th>
-                    <th>Singkatan</th>
-                    <th>Unit</th>
-                    <th>Unit Besaran</th>
-                    <th colspan="2">Action</th>
-                  </tr>
-                  </tfoot>
                 </table>
               </div>
               <!-- /.card-body -->

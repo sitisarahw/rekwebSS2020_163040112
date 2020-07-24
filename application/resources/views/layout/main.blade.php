@@ -40,7 +40,8 @@
     </ul>
 
     <!-- SEARCH FORM -->
-    <form class="form-inline ml-3" role="search" action="{{ route('karyawan.search') }}" method="get">
+    <form class="form-inline ml-3" role="search" action="{{ route('karyawan.search') }}" method="post">
+      @csrf
       <div class="input-group input-group-sm">
         <input class="form-control form-control-navbar" type="search" name="name" placeholder="Search" aria-label="Search">
         <div class="input-group-append">
